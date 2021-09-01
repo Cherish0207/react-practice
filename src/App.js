@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from "react"
+import {adminRoute} from "./routes"
+import {Route, Redirect, Switch} from "react-router-dom"
+export default class App extends Component {
+  render () {
+    return (
+      <Switch>
+        {
+          adminRoute.map((route, index) => <Route key={index} path={route.pathname} component={route.component} exact={route.exact}/>)
+        }  {/* admin页面里的路由    dashboard article articleEdit settings */}
+        <Redirect to={adminRoute[0].pathname} from="/admin" exact/> {/* 重定向到 admin页面 */}
+        <Redirect to="/404" />
+      </Switch>
+    )
+  }
 }
-
-export default App;
