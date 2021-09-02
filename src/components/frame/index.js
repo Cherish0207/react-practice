@@ -24,12 +24,15 @@ export default class Frame extends Component {
         </Breadcrumb>
         <div style={{display: "flex"}}>
           <Menu mode="inline" className="sideMenu" defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]}
-            style={{height: "100%"}}>
+            style={{ height: "100%" }}>
             {menu.map((route) => (
               <Menu.Item key={
                 route.pathname}>{
+                  route.icon}&nbsp;&nbsp;
+                {
                   route.title}</Menu.Item>
-            ))}
+            ))
+            }
           </Menu>{this.props.children}
         </div>
 
