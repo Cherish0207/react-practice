@@ -25,9 +25,10 @@ render () {
         <Breadcrumb.Item>List</Breadcrumb.Item>
         <Breadcrumb.Item>App</Breadcrumb.Item>
       </Breadcrumb>
-      <div style={{display: "flex"}}>
-        <Menu mode="inline" className="sideMenu" defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]}
-          style={{ height: "100%" }} onClick={this.handleMenu}>
+      <div style={{ display: "flex", height: "100%"}}>
+        <Menu mode="inline" className="sideMenu" defaultSelectedKeys={[menu[0].pathname]} selectedKeys={
+          [this.props.location.pathname]} defaultOpenKeys={["sub1"]}
+        style={{ height: "100%" }} onClick={this.handleMenu}>
           {menu.map((route) => (
             <Menu.Item key={
               route.pathname}>{
@@ -46,5 +47,6 @@ render () {
 Frame.propTypes = {
   children: PropTypes.any,
   history: PropTypes.any,
+  location: PropTypes.any,
 }
 export default Frame;
